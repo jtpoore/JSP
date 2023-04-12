@@ -1,0 +1,17 @@
+- name: Ping Cisco devices and execute roles if they respond
+  hosts: all_cisco_devices
+  gather_facts: no
+  tasks:
+    - name: Ping device
+      ping:
+
+    - name: Execute roles if device is up
+      when: "'SUCCESS' in ping_results.stdout"
+      include_role:
+        name: first_role
+
+      include_role:
+        name: second_role
+
+      include_role:
+        name: third_role
