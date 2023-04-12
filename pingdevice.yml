@@ -8,10 +8,28 @@
     - name: Execute roles if device is up
       when: "'SUCCESS' in ping_results.stdout"
       include_role:
-        name: first_role
+        name: config_tacacs
 
       include_role:
-        name: second_role
+        name: config_snmp
 
       include_role:
-        name: third_role
+        name: config_syslog
+        
+      include_role:
+        name: config_snmp_traps
+        
+      include_role:
+        name: config_ACL1
+        
+      include_role:
+        name: config_ACL2
+        
+      include_role:
+        name: config_ACL3
+        
+      include_role:
+        name: config_LLDP
+        
+      include_role:
+        name: save_rconfig
